@@ -1,6 +1,7 @@
 package main
 
 import (
+	"os"
 	"log"
 
 	"github.com/gin-contrib/cors"
@@ -15,7 +16,10 @@ import (
 )
 
 func main() {
+	if os.Getenv("APP_ENV") != "production" {
 	godotenv.Load()
+}
+
 
 	cfg := config.LoadConfig()
 
@@ -58,4 +62,6 @@ func main() {
 
 	log.Println("Server running on port", cfg.Port)
 	r.Run(":" + cfg.Port)
+	log.Println("DATABASE_URL =", cfg.DatabaseURL)
+
 }
