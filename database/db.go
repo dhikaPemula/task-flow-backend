@@ -6,7 +6,7 @@ import (
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 
-	"github.com/AndhikaBhas/miniProject.git/models"
+	// "github.com/AndhikaBhas/miniProject.git/models"
 )
 
 var DB *gorm.DB
@@ -21,11 +21,11 @@ func Connect(databaseURL string) {
 
 	log.Println("Database connected")
 
-	err = DB.AutoMigrate(
-		&models.User{},
-		&models.Category{},
-		&models.Task{},
-	)
+	// err = DB.AutoMigrate(
+	// 	&models.User{},
+	// 	&models.Category{},
+	// 	&models.Task{},
+	// )
 	
 	if err != nil {
 		log.Fatal("Migration failed:", err)
