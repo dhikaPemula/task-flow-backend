@@ -28,8 +28,14 @@ func main() {
 
 	r := gin.Default()
 
+	origins := []string{"*"}
+
+	if cfg.FrontendURL != "" {
+		origins = []string{cfg.FrontendURL}
+	}
+
 	r.Use(cors.New(cors.Config{
-		AllowOrigins:     []string{cfg.FrontendURL},
+		AllowOrigins:     origins,
 		AllowMethods:     []string{"GET", "POST", "PUT", "DELETE"},
 		AllowHeaders:     []string{"Authorization", "Content-Type"},
 		ExposeHeaders:    []string{"Content-Length"},
